@@ -1,0 +1,41 @@
+---
+- name: to install httpd and ensure apache is running
+  hosts: group
+  become: yes
+  vars: 
+    users_to_create:
+      - name: alice
+        password: "{{ 'password123' | password_hash('sha512', 'mysecretsalt') }}"
+        groups: Multipleusers
+      - name: bob
+        password: "{{ 'password456' | password_hash('sha512', 'mysecretsalt') }}"
+        groups: Multipleusers        
+  tasks:
+    - name: Create multiple users
+      user:
+        name: "{{ item.name }}"
+        password: "{{ item.password }}"
+        groups: "{{ item.groups }}"
+        state: present
+      with_items: "{{ users_to_create }}"
+
+    # install multiple packages with ansible
+
+    - name: Install multiple packages with ansible
+      yum:
+        name:
+          - tree
+          - mlocate
+        state: present
+
+    # gather facts
+    - name: Print Hostname
+      ansible.builtin.debug:
+        var: os_name 
+
+    # using gather facts
+    - name: Install httpd on RedHat-based systems
+      package:
+        name: "httpd"
+        state: present
+      when: ansible_facts["os_name"] == "RedHat"
