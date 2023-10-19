@@ -1,0 +1,28 @@
+---
+- name: Create Multiusers
+  hosts: group 
+  become: yes
+  vars:
+    users_to_create:
+      - name: user1
+        uid: 1006
+        description: " To create user1"
+        shell: /bin/bash
+        home: /home/user1
+      - name: user2
+        uid: 1007
+        description: " To create user2"
+        shell: /bin/bash
+        home: /home/user2
+  # Add as many as users you need
+  tasks:
+    - name: Create users
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        comment: "{{ item.description }}"
+        shell: "{{ item.shell }}"
+        home: "{{ item.home }}"
+        state: present
+      with_items: "{{ users_to_create }}"
+ 
