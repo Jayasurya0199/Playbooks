@@ -1,0 +1,29 @@
+AWSEC2_Ansible Playbook
+
+  yum install python3-pip
+  python3 -m pip -V
+  pip install boto
+  python3 -m pip install boto
+
+we are going to make an IAM role with ec2 and attach this role to playbook
+
+--> ansible-doc ec2
+
+ Ec2 creation rleated codes are available in this doc
+
+---> To check playbook syntax
+ 
+ansible-playbook --syntax-check playbkname
+
+
+host localhost --- im going to deploy this in localhost where boto is installed and it will deploy instance in aws console
+
+IAM role : https://youtu.be/HuE-QhrmE1c?si=q4XxABFpYCDmMpOo
+
+--> search IAM on AWS console
+--> Created a IAM user 
+--> got to created user on IAM console
+
+
+Access key : AKIA3TW4ZE5KSZAMW3W6
+Secret Access Key : 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
