@@ -1,0 +1,22 @@
+---
+- name: Array with dictionaries
+  hosts: group
+  vars:
+    dealers:
+      Bajaj: 
+        model: Dominar
+        cc: 400
+        engine: 4-stroke
+      Ktm:
+        model: Duke250
+        cc: 250
+        engine: 4-stroke
+      Yamaha: 
+        model: R15
+        cc: 155
+        engine: 4-stroke
+  tasks:
+    - name: Array with dictionaries
+      debug: 
+        msg: "List of dealer {{dealers.Bajaj.model}}"
+
