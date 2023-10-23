@@ -1,0 +1,15 @@
+---
+- name: Example playbook with ignore error
+  hosts: group
+  tasks:
+    - name: List the file of root directory 
+      command: ls -ltr /root
+      register: list_root
+      ignore_errors: yes
+    - name: Print the output
+      debug:
+        var: list_root.stdout
+    - name: create a file
+      file:
+        path: /tmp/ignore.txt
+        state: touch 

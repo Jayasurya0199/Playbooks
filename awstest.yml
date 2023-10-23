@@ -1,0 +1,13 @@
+---
+- name: Ansible Playbook
+  hosts: localhost
+  tasks: 
+  - name: Launching AWS instance using Ansible
+
+  ec2:
+    key_name: mumbai
+    region: ap-south-1
+    instance_type: t2.micro
+    image: ami-0874ff0d73a3ab8cf
+    instance_tags:
+      name: Demo_Server
