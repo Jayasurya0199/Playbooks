@@ -1,0 +1,10 @@
+---
+- name: Ansible register variable
+  hosts: group
+  tasks: 
+    - name: Ansible register variables
+      shell: "uptime"
+      register: check_uptime
+    - debug:
+        var: check_uptime.stdout
+
