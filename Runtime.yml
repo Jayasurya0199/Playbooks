@@ -1,0 +1,10 @@
+---
+- name: Ansible runtime variable
+  hosts: group
+  vars:
+    car: "Benz"
+  tasks:
+    - name: Ansible runtime variable
+      debug:
+        msg: "My favourite car is {{car}}"
+
