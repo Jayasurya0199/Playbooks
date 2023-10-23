@@ -1,0 +1,12 @@
+---
+- name: Ansible Array
+  hosts: group
+  vars:
+    dealers:
+      - Bajaj
+      - KTM
+      - Yamaha
+  tasks:
+    - name: Ansible Array 
+      debug: 
+        msg: "{{dealers[1]}}"
