@@ -1,0 +1,10 @@
+---
+- name: To Create a simple variable
+  hosts: group
+  vars: 
+    var1: Good Day!
+  tasks:
+    - name: Ansible Simple Variable
+      debug:
+        msg: "{{var1}}, Welcome to Simple ansible variable"
+
