@@ -1,0 +1,13 @@
+---
+- name: Start instances
+  hosts: localhost
+  tasks:
+    - name: Start instances that were previously Stoped
+      ec2:
+        aws_access_key: AKIA3TW4ZE5K7X6AABEM
+        aws_secret_key: 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
+        state: running
+        region: ap-south-1
+        instance_tags:
+           Name: Demo_server
+
